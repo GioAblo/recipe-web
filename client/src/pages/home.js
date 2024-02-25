@@ -72,25 +72,29 @@ export const Home = () => {
   
 
   return (
-    <div>
+    <div className='home flex items-center flex-col'>
       <h1>Recipes</h1>
-      
-      <ul>
-        {recipes.map((recipe) => (
-          <li key={recipe._id}>
-            <div>
-              <h2>{recipe.name}</h2>
-              <button onClick={() => saveRecipe(recipe._id)}  disabled={isRecipeSaved(recipe._id)}>{isRecipeSaved(recipe._id) ? "Saved" : "Save"}</button>
-            </div>
-            <img src={recipe.imageUrl} alt={recipe.name}/>
-            <div>{recipe.instructions}</div>
-            <div>
-              <p>{recipe.ingredients}</p>
-            </div>
-            <p>Cooking time: {recipe.cookingTime} minutes</p>
-          </li>
-        ))}
-      </ul>
+
+      <div className=''>
+        <ul >
+          {recipes.map((recipe) => (
+            <li className='mb-4 shadow-md ' key={recipe._id}>
+              <div className="relative">
+                <img className='rounded max-h-60 ' src={recipe.imageUrl} alt={recipe.name}/>
+                <div className='absolute bottom-0 rounded-tr-3xl bg-white px-10 py-2'>
+                  <h2 className='font-bold '>{recipe.name}</h2>
+                </div>
+              </div>
+                <button onClick={() => saveRecipe(recipe._id)}  disabled={isRecipeSaved(recipe._id)}>{isRecipeSaved(recipe._id) ? "Saved" : "Save"}</button>
+              <div>{recipe.instructions}</div>
+              <div>
+                <p>Igredients:{recipe.ingredients}</p>
+              </div>
+              <p>Cooking time: {recipe.cookingTime} minutes</p>
+            </li>
+          ))}
+        </ul>
+      </div>
           
     </div>
   )

@@ -2,7 +2,7 @@ import  {  useState } from 'react';
 import axios from 'axios';
 import {useCookies} from 'react-cookie';
 import {useNavigate} from "react-router-dom";
-
+import "../App.css"
 
   
 
@@ -12,13 +12,23 @@ export const Auth = () => {
 
   
   return (
-    <div>
+
+    <div className='Auth  flex justify-center flex-col items-center pt-7'>
+
+    <div className=' form-container'>
+
+
       {!isSign ? <Login /> :  <Register />}
       
-      <div style={{paddingTop: "20px"}}>
+      <p className='signup-link'>
+
+        {!isSign ? "Dont't have an account" : "If you have an account"}
+        <div className='signup-link link' onClick={() => setIsSign(!isSign)} >{!isSign ? "sign up now" : "sign in"} </div>
         
-        <button onClick={() => setIsSign(!isSign)}  style={{cursor: "pointer", color: "blue"}}>{!isSign ? "sign up" : "sign in"} </button>
-      </div>
+      </p>
+
+      
+    </div>
     </div>
   );
 }
@@ -93,17 +103,20 @@ const Form = ({username, setUsername, password, setPassword, label, onSunmit}) =
  
   return(
     <div>
-      <form onSubmit={onSunmit}>
-        <h2>{label}</h2>
-        <div>
+        <h2 className='logo-container'>{label}</h2>
+      <form className='form' onSubmit={onSunmit}>
+
+        <div className='form-group'>
           <label htmlFor='username'>Username:  </label>
           <input value={username} type='text' id="username" onChange={(e) => setUsername(e.target.value)} />
         </div>
-        <div>
+
+        <div className='form-group'>
           <label htmlFor='password'>Password:  </label>
           <input value={password} type='password' id="password" onChange={(e) => setPassword(e.target.value)} />
         </div>
-        <button type='submit'>{label}</button>
+
+        <button className='form-submit-btn' type='submit'>{label}</button>
       </form>
     </div>
   )

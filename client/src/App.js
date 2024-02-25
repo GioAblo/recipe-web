@@ -13,7 +13,7 @@ function App() {
 
 
   return (
-    <div className="flex bg-slate-700" >
+    <div className="App" >
       <Router>
 
         
