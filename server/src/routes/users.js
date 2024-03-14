@@ -11,10 +11,10 @@ router.post("/register", async (req, res) => {
     const {username, password} = req.body;
 
     // ინდენტური username-ის ძიება ბაზაზე
-    const user = await UserModel.findOne({username});
+    const users = await UserModel.findOne({username});
 
     // თუ ეს მომხმარებელი უკვე არსებობს აქ წყდება კოდის კომპილაცია
-    if (user) {
+    if (users) {
         return res.json({message: "User already exists!"})
     };
 
@@ -36,14 +36,14 @@ router.post("/register", async (req, res) => {
 router.post("/login", async (req, res) => {
     const {username, password} = req.body;
 
-    const user = await UserModel.findOne({username});
+    const users = await UserModel.findOne({username});
 
-    if(!user) {
+    if(!users) {
         return res.json({message: "User doesn't exist!"})
     }   
 
     // შედარება ფრონტიდან მოსული პაროლის და მონაცემთა ბაზის პაროლებს შორის
-    const isPasswordValid = await bcrypt.compare(password, user.password);
+    const isPasswordValid = await bcrypt.compare(password, users.password);
 
 
     if(!isPasswordValid) {
@@ -51,8 +51,8 @@ router.post("/login", async (req, res) => {
     }
     
     // if web refreshed with this func user not signout!
-    const token = jwt.sign({id: user._id}, "secret");
-    res.json({token, userID: user._id})
+    const token = jwt.sign({id: users._id}, "secret");
+    res.json({token, userID: users._id})
 
 })
 

@@ -19,14 +19,14 @@ export const Navbar = () => {
   }
   
   return (
-    <div className='navbar pt-2 pb-2 shadow-md'>  
-          <div className="flex justify-around items-center px-2 ">
+    <div className='navbar lg:px-20 pt-2 pb-2 shadow-md'>  
+          <div className="flex justify-around lg:justify-evenly items-center px-2 ">
           {!userID ? <Link to="/">Login/register</Link> : 
           <> 
-             <Link to="/home">Home</Link> 
-             <Link to="/create-recipe">Add recipe</Link>
-             <Link to="/saved-recipes">Saved</Link> 
-             <button className="button" onClick={logout}>Log out</button>
+             <Link to="/home" className="lg:text-xl">Home</Link> 
+             <Link to="/create-recipe" className="lg:text-xl">Add recipe</Link>
+             <Link to="/saved-recipes" className="lg:text-xl">Saved</Link> 
+             <button className="button lg:text-xl text-base" onClick={logout}>Log out</button>
            </>
           }
           </div>       

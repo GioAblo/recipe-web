@@ -20,12 +20,12 @@ export const Auth = () => {
 
       {!isSign ? <Login /> :  <Register />}
       
-      <p className='signup-link'>
+      <div className='signup-link'>
 
         {!isSign ? "Dont't have an account" : "If you have an account"}
         <div className='signup-link link' onClick={() => setIsSign(!isSign)} >{!isSign ? "sign up now" : "sign in"} </div>
         
-      </p>
+      </div>
 
       
     </div>
@@ -50,6 +50,7 @@ const Login = () => {
 
       setCookies("accses_token", response.data.token);
       window.localStorage.setItem("userID", response.data.userID);
+      console.log("userID", response.data);
       navigate("/home")
     } catch (error) {
       console.error(error)

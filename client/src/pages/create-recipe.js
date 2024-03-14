@@ -3,6 +3,7 @@ import axios from "axios";
 import {useGetUserID} from "../hooks/useGetUserID";
 import {useNavigate} from 'react-router-dom';
 import {useCookies} from 'react-cookie';
+import "../App.css"
 
 export const CreateRecipe = () => {
   const userID = useGetUserID();
@@ -46,30 +47,50 @@ export const CreateRecipe = () => {
       console.error(error)
     }
   }
-
+  
   return (
-    <div style={{maxWidth: '400px'}}>
-      <h2>Create Recipe</h2>
-      <form onSubmit={onSubmit} style={{display: "flex", flexDirection: "column"}}>
-        <label htmlFor='name'>Name</label>
-        <input type='tetx' id='name' name='name' onChange={handleChange} />
-        {/* <label htmlFor='Description'>Description</label>
-        <textarea name='Description' id='Description'></textarea> */}
-        <label htmlFor='ingredients'>ingredients</label>
+    <div className='flex flex-col items-center pt-6 lg:text-xl'>
+
+      <h1>Create Recipe</h1>
+    <div className='form-container' style={{maxWidth: '400px'}}>
+
+      <form className='form' onSubmit={onSubmit} style={{display: "flex", flexDirection: "column"}}>
+
+        <div className='form-group py-2'>
+          <label className='lg:text-base' htmlFor='name'>Name</label>
+          <input type='tetx' id='name' name='name' onChange={handleChange} />
+        </div>
+       
+       <div className='form-group py-2'>
+        <label htmlFor='ingredients' className='lg:text-base'>Ingredients</label>
         {recipe.ingredients.map((ingredient, idx) => (
-          <input key={idx} type='text' name='ingredients' value={ingredient} 
+          <input className='my-1' key={idx} type='text' name='ingredients' value={ingredient} 
           onChange={(event) => handleIngredientChange(event, idx)}
-           />
-        ))}
-        <button type='button' onClick={addIngredient}>Add igredient</button>
-        <label htmlFor='instructions'>Instructions</label>
-        <textarea name='instructions' id='instructions' onChange={handleChange}></textarea>
-        <label htmlFor='imageUrl'>image Url</label>
-        <input type='text' id='imageUrl' name='imageUrl' onChange={handleChange}/>
-        <label htmlFor='cookingTime'>Cooking Time (in minutes)</label>
-        <input type='number' id='cookingTime' name='cookingTime' onChange={handleChange}/>
-        <button type='submit'>Create</button>
+          />
+          ))}
+          <button type='button' className='bo border-spacing-3 border-2 rounded w-1/2' onClick={addIngredient}>+ Add</button>
+        </div>
+
+
+        <div className='form-group py-2'>
+          <label className='lg:text-base' htmlFor='instructions'>Instructions</label>
+          <textarea name='instructions' id='instructions' onChange={handleChange}></textarea>
+        </div>
+
+        <div className='form-group py-2'>
+          <label className='lg:text-base' htmlFor='imageUrl'>Image Url</label>
+          <input type='text' id='imageUrl' name='imageUrl' onChange={handleChange}/>
+        </div>
+
+        <div className='form-group py-2'>
+          <label className='lg:text-base' htmlFor='cookingTime'>Cooking Time (in minutes)</label>
+          <input type='number' id='cookingTime' name='cookingTime' onChange={handleChange}/>
+        </div>
+
+
+        <button type='submit' className='form-submit-btn'>Create</button>
       </form>
+    </div>
     </div>
   )
 }

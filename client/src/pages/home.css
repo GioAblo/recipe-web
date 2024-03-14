@@ -1,0 +1,16 @@
+.save-btn {
+  background: #536DFE;
+   font-family: inherit;
+   display: inline-block;
+   width: 6em;
+   height: 2.4em;
+   line-height: 2.5em;
+   overflow: hidden;
+   transition: color .5s;
+   font-size: 15px;
+   border-radius: 6px;
+   font-weight: 500;
+   color: #fff;
+  }
+  
+  
