@@ -13,7 +13,11 @@ app.use(cors());
 app.use("/auth", userRouter);
 app.use("/recipes", recipesRouter)
 
+
 mongoose.connect("mongodb+srv://user3030:user2525@cluster1.6ghcodi.mongodb.net/recipe?retryWrites=true&w=majority");
 
+app.use("/run", (req, res) => {
+    res.send("server is runing...")
+})
 
 app.listen(3001, () => console.log("Server runing..."))
