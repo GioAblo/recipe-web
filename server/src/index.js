@@ -23,10 +23,6 @@ app.use("/recipes", recipesRouter)
 mongoose.connect(process.env.MONGODB_URL);
 
 
-app.use("/run", (req, res) => {
-    res.send("server is runing...")
-})
-
 
 
 
