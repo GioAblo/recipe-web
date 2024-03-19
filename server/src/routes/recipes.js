@@ -2,7 +2,7 @@ import express from 'express';
 import mongoose from 'mongoose';
 import {RecipeModel} from "../models/Recipes.js";
 import {UserModel} from "../models/Users.js";
-import { verifyToken } from './users.js';
+import { verifyToken } from './Users.js';
 
 const router = express.Router();
 

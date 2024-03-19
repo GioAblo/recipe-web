@@ -2,6 +2,10 @@ import express  from "express";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
 import {UserModel} from "../models/Users.js" ;
+import dotenv from 'dotenv'
+dotenv.config();
+
+const jwtsecrettoken = process.env.JWT_SECRET
 
 const router = express.Router();
 
@@ -51,7 +55,7 @@ router.post("/login", async (req, res) => {
     }
     
     // if web refreshed with this func user not signout!
-    const token = jwt.sign({id: users._id}, "secret");
+    const token = jwt.sign({id: users._id}, jwtsecrettoken);
     res.json({token, userID: users._id})
 
 })
@@ -61,7 +65,7 @@ export {router as userRouter}
 export const verifyToken = (req, res, next) => {
     const token = req.headers.authorization;
     if(token) {
-        jwt.verify(token, "secret", (err) => {
+        jwt.verify(token, jwtsecrettoken, (err) => {
             if(err) return res.sendStatus(403);
             next();
         });
