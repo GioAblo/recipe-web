@@ -46,11 +46,11 @@ const Login = () => {
     event.preventDefault();
     try {
       
-      const response = await axios.post("http://localhost:3001/auth/login", {username, password});
+      const response = await axios.post("https://recipe-web-toey.onrender.com/auth/login", {username, password});
 
       setCookies("accses_token", response.data.token);
       window.localStorage.setItem("userID", response.data.userID);
-      console.log("userID", response.data);
+     
       navigate("/home")
     } catch (error) {
       console.error(error)
@@ -79,7 +79,7 @@ const Register = () => {
     event.preventDefault();
 
     try {
-      await axios.post("http://localhost:3001/auth/register", {username, password});
+      await axios.post("https://recipe-web-toey.onrender.com/auth/register", {username, password});
       alert("Registration completed! Now you can login!")
     } catch (err) {
       console.error(err);

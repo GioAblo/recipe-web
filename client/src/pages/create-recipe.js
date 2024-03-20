@@ -40,7 +40,7 @@ export const CreateRecipe = () => {
     event.preventDefault();
 
     try {
-      await axios.post("http://localhost:3001/recipes", recipe,    {headers: {authorization: cookies.accses_token}});
+      await axios.post("https://recipe-web-toey.onrender.com/recipes", recipe,    {headers: {authorization: cookies.accses_token}});
       alert("Recipe created!");
       navigate("/home")
     } catch (error) {

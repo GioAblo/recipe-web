@@ -13,7 +13,7 @@ export const SavedRecipes = () => {
   useEffect(() => {
     const fetchSavedRecipe = async() => {
       try {
-        const response = await axios.get(`http://localhost:3001/recipes/savedRecipes/${userID}`);
+        const response = await axios.get(`https://recipe-web-toey.onrender.com/recipes/savedRecipes/${userID}`);
         setSavedRecipes(response.data.savedRecipes)
         
         
