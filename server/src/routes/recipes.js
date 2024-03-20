@@ -1,7 +1,7 @@
 import express from 'express';
 import mongoose from 'mongoose';
-import {RecipeModel} from "../models/recipes.js";
-import {UserModel} from "../models/users.js";
+import {RecipeModel} from "../models/model-recipes.js";
+import {UserModel} from "../models/model-users.js";
 import { verifyToken } from './users.js';
 
 const router = express.Router();
